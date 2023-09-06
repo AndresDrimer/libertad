@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
       
         return {
           ...user,
-          cards: [],
+       //   cards: [],
         };
       },
     }),
@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: user.id,
-          cards: user.cards,//include cards to token
+      //    cards: user.cards,//include cards to token
         };
       }
       return token;
@@ -72,7 +72,7 @@ export const authOptions: NextAuthOptions = {
           ...session.user,
           id: token.id,
           role: token.role,
-          cards: token.cards,   //include cards to session
+       //   cards: token.cards,   //include cards to session
         },
       };
     },

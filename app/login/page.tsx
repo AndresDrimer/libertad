@@ -16,9 +16,9 @@ function LoginPage() {
   };
 
   return (
-    <div className="bg-[url('/bombonera.jpg')]">
+    <div className="bg-[url('/bombonera.jpg')] bg-no-repeat bg-center">
      
-      <div className="h-screen flex flex-col justify-center bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2">
+      <div className="h-screen flex flex-col justify-center bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2 lg:w-1/4">
        
         <div className="w-full flex justify-center ">
           <Image
@@ -37,8 +37,8 @@ function LoginPage() {
         <h3 className="text-5xl mt-2">LOGIN</h3>
 
         <form onSubmit={handleForm} className="grid grid-cols-1 gap-4 mt-12">
-          <div className="flex items-center">
-            <label htmlFor="name" className="mr-10 text-xl">Name: </label>
+          <div className="flex flex-col ">
+            <label htmlFor="name" className="mr-10 text-xl ">Name: </label>
             <input
               name="name"
               className="w-full indent-2 px-4 py-2 "
@@ -50,11 +50,11 @@ function LoginPage() {
             />
           </div>
 
-          <div className="flex">
-            <label htmlFor="password" className="mr-10 py-2 text-xl">Password: </label>
+          <div className="flex flex-col">
+            <label htmlFor="password" className="mr-10  text-xl">Password: </label>
             <input
               name="password"
-              className="w-full indent-2"
+              className="w-full indent-2 px-4 py-2"
               type="password"
               value={newUser.password}
               onChange={(e) => {
@@ -62,7 +62,7 @@ function LoginPage() {
               }}
             />
           </div>
-          <button className="border-2 rounded mt-2 py-1 bg-blue-200 hover:text-gray-600 hover:scale-y-110 ">send</button>
+          <button className="border-2 rounded mt-2 py-2 bg-blue-200 hover:text-gray-600 hover:scale-y-110 ">send</button>
         </form>
       </div>
     </div>

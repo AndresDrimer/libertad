@@ -10,16 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Card {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  absoluteNum Int
-  isSelected  Boolean
-  playerName  String
-  team        String
-  teamNum     Int
-  owner       User[] 
-}
-
 model User {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String?
@@ -27,7 +17,19 @@ model User {
   password   String
   image      String?
   role       String   @default("USER")
-  cards      String[] @db.ObjectId
- cardsOwned  Card?    @relation(fields: [cards], references: [id])
- 
+  cards      Card[]   @relation(fields:[cardsId], references:[id])
+  cardsId    String[] @db.ObjectId
+  
 }
+
+model Card {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  absoluteNum Int
+  playerName  String?
+  team        String
+  teamNum     Int
+  owners      User[]  @relation(fields:[ownersById], references:[id])
+  ownersById  String[] @db.ObjectId
+}
+
+//i´m using many to many(m-n) relation between model cards and users, becuase one User can own many cards and a Card can be owned by many users

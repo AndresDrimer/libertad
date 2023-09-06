@@ -8,13 +8,13 @@ declare module "next-auth" {
         user: {
             id: string,
             role: string,
-            cards: String[],
+          //  cards: String[],
         } & DefaultSession["user"]
     }
 
     interface User extends DefaultUser {
         role: string,
-        cards: String[],
+       // cards: String[],
     }
 }
 

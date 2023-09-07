@@ -2,11 +2,14 @@
 import { Card } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 
 function EachCard({it}: {it: Card}) {
     const router = useRouter();
     
+
+   
     const {data: session} = useSession();
     const userId: string  = session?.user.id ?? ""
 
@@ -23,6 +26,9 @@ function EachCard({it}: {it: Card}) {
         body: JSON.stringify({cardId, userId})
       });
      //router.push("/dashboard") don´t know why this doesn´t work as it should be
+
+     console.log("res", res.json())
+     
      window.location.href = "/dashboard"
      };
 

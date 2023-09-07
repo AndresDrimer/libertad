@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useRef, useState } from "react";
 import { GoMute, GoUnmute } from "react-icons/go";
 
@@ -8,7 +7,7 @@ function BgAudio() {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.play();
+      audioRef.current.pause(); // Pause the audio on mount
     }
   }, []);
 
@@ -28,9 +27,9 @@ function BgAudio() {
   return (
     <div>
       <button onClick={handleSoundToggle} className="cursor-pointer">
-        {soundOn ? <GoMute /> : <GoUnmute />}
+        {!soundOn ? <GoMute /> : <GoUnmute />}
       </button>
-      <audio ref={audioRef} src="/sounds/hinchada-loop-4bars.mp3" loop autoPlay/>
+      <audio ref={audioRef} src="/sounds/hinchada-loop-4bars.mp3" loop />
     </div>
   );
 }

@@ -18,7 +18,7 @@ const Campeones = () => {
 
       </div>
     
-    <div className='w-full grid grid-cols-1 gap-8  mx-auto'>
+    <div className='w-full grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
 {campeones.map(it=>(
     <div className='flex' key={it.year}>
         <Image 

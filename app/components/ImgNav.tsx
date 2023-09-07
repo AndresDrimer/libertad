@@ -8,7 +8,7 @@ function ImgNav() {
     const path = usePathname();
     console.log("path", path)
   return (
-<div>
+<div className='cursor-pointer'>
     {path==="/campeones" ? (<div className="flex flex-col items-center justify-center">
     <Link href="/dashboard" className="hover:scale-110">
       <Image

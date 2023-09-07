@@ -15,7 +15,7 @@ async function EditUser() {
   <h1 className='text-2xl'>Your Actual User</h1>
   <div className='flex gap-2 justify-center items-center'><p>Name: {session?.user.name}</p><UpdateName /></div>
   <p>Email: {session?.user.email}</p>
-  <p>Cards: {session?.user.cards}</p>
+  
 </div>
 
 

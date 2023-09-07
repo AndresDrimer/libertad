@@ -8,19 +8,18 @@ export const PATCH = async (req: Request) => {
           const { cardId, userId } = await req.json();
   console.log("cardId: ", cardId, "userId", userId)
     
-
+      //find card by Id
       const card = await prisma.card.findUnique({
         where: {id: cardId},
         include: {owners: true}
       });
 
-    console.log("card", card)
+   
 
       const previousOwners = card?.owners.map(owner => owner.id) || []
-    console.log("prevOwners: ", previousOwners)
+    
+//to unmark
 if(previousOwners.includes(userId)){
-  //aca deberia en realidad borrarla, puede equivocarse al marcarla
-
   const removeFromPreviousOwners = previousOwners.filter(it=> it!==userId)
   const unOwnCard = await prisma.card.update({
     where: {id: cardId},
@@ -32,7 +31,7 @@ if(previousOwners.includes(userId)){
   })
   return NextResponse.json({message: "Owner removed"}, {status: 201})
 }
-
+    //to mark
     const updatedCard = await prisma.card.update({
       where: { id: cardId },
       data: {
@@ -42,7 +41,7 @@ if(previousOwners.includes(userId)){
       },
     });
 
-  console.log("updatedCard: ", updatedCard)
+ 
 
     return NextResponse.json({ message: 'Owner added' }, { status: 201 });
     } catch (error) {

@@ -26,6 +26,7 @@ async function Navbar() {
         width={40}
         height={40}
         style={{ width: 'auto', height: 'auto' }}
+        priority
       /></div>
 
      

@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import { SignOutButton } from "../components/SignOutButton";
-import Navbar from "../components/Navbar";
+
 import prisma from "@/prisma";
 import { Session } from "inspector";
 import Image from "next/image";
@@ -19,12 +19,11 @@ async function Dashboard() {
   const cards = await prisma.card.findMany({ orderBy: {absoluteNum: "asc"}});
   
   return (
-    <section className="bg-gradient-to-r from-black to-[#302d67] text-white p-4">
+    <section className=" ">
       
     
-      <Navbar />
 
-      <p className="text-xl border-b text-center">Hola {session?.user?.name?.toUpperCase()} !</p>
+    
 
       <div className="w-full flex flex-col justify-center items-center mb-8">
         <Image

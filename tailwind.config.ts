@@ -13,6 +13,15 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      keyframes:{
+        slideshow: {
+          "0%": {transform: "translateX(0%)" },
+          "100%": {transform: "translateX(-250%)" }
+        }
+      },
+      animation: {
+        "useSlideshow": "slideshow 8s linear infinite"
+      }
     },
   },
   plugins: [],

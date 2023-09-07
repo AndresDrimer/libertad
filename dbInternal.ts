@@ -1,6 +1,3 @@
-import Image from "next/image";
-import React from "react";
-
 export const escudos = [
     {
       path: "/escudos/alianza-lima.png",
@@ -13,10 +10,12 @@ export const escudos = [
     {
       path: "/escudos/atletico-nacional.png",
       team: "Atlético Nacional",
+      
     },
     {
       path: "/escudos/atletico-paranaense.png",
       team: "Altlético Paranaense",
+      
     },
     {
       path: "/escudos/aucas.png",
@@ -126,24 +125,97 @@ export const escudos = [
       team: "The strongest",
     },
   ];
-  
-const Escudos = () => {
-  
-  return (
-    <div className="mt-4 grid grid-cols-7 md:grid-cols-9 lg:grid-cols-12 place-items-center gap-2 w-full ">
-      {escudos.map((it) => (
-        <Image
-          src={it.path}
-          alt="escudo"
-          width={20}
-          height={20}
-          key={it.team}
-          style={{ width: "auto", height: "auto" }}
-        
-        />
-      ))}
-    </div>
-  );
-};
 
-export default Escudos;
+  export const campeones=[
+    {
+        year: 2022,
+        team: "Flamengo",
+        path: "/escudos/flamengo.png",
+    },
+    {
+        year: 2021,
+        team: "Palmeiras",
+        path: "/escudos/palmeiras.png",
+    },
+    {
+        year: 2020,
+        team: "Palmeiras",
+        path: "/escudos/palmeiras.png",
+    },
+    {
+        year: 2019,
+        team: "Flamengo",
+        path: "/escudos/flamengo.png",
+    },
+    {
+        year: 2018,
+        team: "River Plate",
+        path: "/escudos/river.png",
+    },
+    {
+        year: 2017,
+        team: "Gremio",
+        path: "/escudos-antiguos/gremio.png"
+    },
+
+    {
+        year: 2016,
+        team: "Atlético Nacional",
+        path: "/escudos-antiguos/atletico-nacional.png"
+    },
+    {
+        year: 2015,
+        team: "River Plate",
+        path: "/escudos/river.png",
+    },
+    {
+        year: 2014,
+        team: "San Lorenzo",
+        path: "/escudos-antiguos/san-lorenzo.png"
+    },
+    {
+        year: 2013,
+        team: "Atlético Mineiro",
+        path: "/escudos-antiguos/atletico-mineiro.png"
+    },
+    {
+        year: 2012,
+        team: "Corinthinas",
+        path: "/escudos/corinthians.png",
+    },
+    {
+        year: 2011,
+        team: "Santos",
+        path: "/escudos-antiguos/santos.png"
+    },
+    {
+        year: 2010,
+        team: "Internacional",
+        path: "/escudos/internacional.png",
+    },
+    {
+        year: 2009,
+        team: "Estudiantes de La Plata",
+        path: "/escudos-antiguos/estudiantes-lp.png"
+    },
+    {
+        year: 2008,
+        team: "Liga de Quito",
+        path: "/escudos-antiguos/liga-quito.png"
+    },
+    {
+        year: 2007,
+        team: "Boca Jrs.",
+        path: "/escudos/boca.png",
+    },
+    {
+        year: 2006,
+        team: "Internacional",
+        path: "/escudos/internacional.png",
+    },
+    {
+        year: 2005,
+        team: "Sao Paulo",
+        path: "/escudos-antiguos/sao-paulo.png"
+    },
+  ]

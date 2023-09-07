@@ -19,12 +19,7 @@ async function Dashboard() {
   const cards = await prisma.card.findMany({ orderBy: {absoluteNum: "asc"}});
   
   return (
-    <section className=" ">
-      
-    
-
-    
-
+    <section className=" ">     
       <div className="w-full flex flex-col justify-center items-center mb-8">
         <Image
           src={"/logo-liber.png"}

@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 
+
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,12 +17,27 @@ const config: Config = {
       keyframes:{
         slideshow: {
           "0%": {transform: "translateX(0%)" },
-          "100%": {transform: "translateX(-250%)" }
-        }
+          "100%": {transform: "translateX(-240%)" },
+        },
+        slideshowMd: {
+          "0%": {transform: "translateX(0%)" },
+          "100%": {transform: "translateX(-160%)" },
+        },
+        slideshowXl: {
+          "0%": {transform: "translateX(0%)" },
+          "100%": {transform: "translateX(-60%)" },
+        },
       },
       animation: {
-        "useSlideshow": "slideshow 8s linear infinite"
-      }
+        "useSlideshow": "slideshow 10s linear infinite",
+        "useSlideShowMd": "slideshowMd 14s linear infinite",
+        "useSlideShowXl": "slideshowXl 30s linear infinite",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      translate: ["responsive", "hover"],
     },
   },
   plugins: [],

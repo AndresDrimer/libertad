@@ -20,7 +20,7 @@ const Campeones = () => {
     
     <div className='w-full grid grid-cols-1 gap-8  mx-auto'>
 {campeones.map(it=>(
-    <div className='flex'>
+    <div className='flex' key={it.year}>
         <Image 
         src={it.path}
         alt="escudo"
@@ -28,7 +28,7 @@ const Campeones = () => {
         height={60}
         style={{ width: 'auto', height: 'auto' }}
         className='ml-2'
-        key={it.year}
+        
         />
 
 <div className='ml-8 flex flex-col items-start justify-center'>

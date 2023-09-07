@@ -6,18 +6,26 @@ LAST UPDATES TODO
 
 - sort cards by absolute number: DONE
 
-- user - cards: method to add cards to collection
+- user - cards: method to add cards to collection: DONE
 
 - Ui design: DONE
 
+-correct numeration: DONE
 ---
 
 FOR NEXT VERSION
+- it has a slow perfomance having to refresh page every time a cards is being clicked, maybe there is another way to do it
+
+-mejorar login page, para atender el caso de login incorrecto
 
 - update username: 
 https://www.youtube.com/watch?v=bkUmN9TH_hQ&t=6s
 min 21:48
+
 1) add toasts
+
 2) add a tiny celebration each time you complete one team, and a bigger one when completing full collection
+
 3) add a Row with previous libertadores champions sorted by year
-4) add sounds
+
+4) add sounds: BACKGROUND SOUND may not be good...

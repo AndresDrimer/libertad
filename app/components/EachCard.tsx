@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 function EachCard({it}: {it: Card}) {
     const router = useRouter();
+    
     const {data: session} = useSession();
     const userId: string  = session?.user.id ?? ""
 
@@ -21,7 +22,7 @@ function EachCard({it}: {it: Card}) {
         },
         body: JSON.stringify({cardId, userId})
       });
-     // router.push("/dashboard") don´t know why this doesn´t work as it should be
+     //router.push("/dashboard") don´t know why this doesn´t work as it should be
      window.location.href = "/dashboard"
      };
 
@@ -30,11 +31,14 @@ function EachCard({it}: {it: Card}) {
   return (
     <button
     key={it.absoluteNum}
-    className={`border-2 rounded-sm text-center hover:scale-105 text-xl py-2 ${owned ? "bg-emerald-500" : "bg-sky-950"}`}
+    className={`border-2 rounded-sm text-center hover:scale-105 text-xl px-1 py-2  ${owned ? "bg-emerald-500 border-green-800" : "bg-sky-950"}`}
     onClick={()=>selectCard(it.id)}
-  ><p className='text-3xl'>{it.absoluteNum}</p>
-   <p className='text-sm'>({it.team.substring(0, 3).toUpperCase()} - {it.teamNum})</p> 
+  >
+   { it.team !=="CL" ? (<div><p className='text-2xl'>{it.teamNum}</p>
+   <p className='text-xs break-all'>{it.team.toUpperCase()}</p></div>) : (<div><p className='text-2xl'>{it.team} {it.teamNum}</p>
+   </div>)} 
     
+
   </button>
   )
 }

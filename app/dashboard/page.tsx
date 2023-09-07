@@ -5,9 +5,8 @@ import Navbar from "../components/Navbar";
 import prisma from "@/prisma";
 import { Session } from "inspector";
 import Image from "next/image";
-
-import EachCard from "../components/EachCard";
-
+import Footer from "@/app/components/Footer"
+import EachCard from "@/app/components/EachCard";
 
 
 
@@ -20,13 +19,13 @@ async function Dashboard() {
   const cards = await prisma.card.findMany({ orderBy: {absoluteNum: "asc"}});
   
   return (
-    <section className="bg-[#181717] text-white p-4">
+    <section className="bg-gradient-to-r from-black to-[#302d67] text-white p-4">
       
-      {/* Navbar */}
+    
       <Navbar />
 
-   
- 
+      <p className="text-xl border-b text-center">Hola {session?.user?.name?.toUpperCase()} !</p>
+
       <div className="w-full flex flex-col justify-center items-center mb-8">
         <Image
           src={"/logo-liber.png"}
@@ -34,6 +33,7 @@ async function Dashboard() {
           className="relative"
           width={200}
           height={200}
+          style={{ width: 'auto', height: 'auto' }}
           priority
         />
         <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal">
@@ -55,6 +55,7 @@ async function Dashboard() {
      
     ))}
   </div>
+  <Footer />
     </section>
   );
 }

@@ -26,7 +26,7 @@ function EachCard({it}: {it: Card}) {
      };
 
     const owned = it.ownersById.includes(userId)
-console.log("owned", owned)
+
   return (
     <button
     key={it.absoluteNum}

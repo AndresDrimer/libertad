@@ -28,6 +28,7 @@ const Campeones = () => {
         height={60}
         style={{ width: 'auto', height: 'auto' }}
         className='ml-2'
+        key={it.year}
         />
 
 <div className='ml-8 flex flex-col items-start justify-center'>

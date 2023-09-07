@@ -51,7 +51,7 @@ async function Dashboard() {
       {/* Cartas */}
       <div className="grid grid-cols-4 lg:grid-cols-12 gap-4 mx-auto px-4">
     {cards.map((it) => (
-      <EachCard it={it} />
+      <EachCard it={it} key={it.id}/>
      
     ))}
   </div>

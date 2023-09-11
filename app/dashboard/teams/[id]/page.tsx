@@ -58,7 +58,7 @@ async function TeamPage({ params }: { params: Params }) {
      
 
      <div className="flex flex-col gap-4 w-1/2 items-center mt-4">
-            {actualTeam?.yearsOfChampionship.map(it=>(<div className="border-2 rounded-md flex items-center gap-2 px-2 py-1"><GiCheckMark className="text-emerald-500"/><p className="text-xl">{it}</p></div>))}
+            {actualTeam?.yearsOfChampionship.map(it=>(<div className="border-2 rounded-md flex items-center gap-2 px-2 py-1" key={it}><GiCheckMark className="text-emerald-500"/><p className="text-xl">{it}</p></div>))}
         </div>
 </div>) : (<div className="mt-8 flex justify-center gap-2 items-center"> <RxCrossCircled className="text-red-500" /> No ganó ninguna edición de la Copa</div>)}
    

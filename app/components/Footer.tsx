@@ -1,10 +1,9 @@
-import React from 'react'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
   
   return (
-    <div className='text-white text-center text-lg mt-10 border-t pt-1'>@ Andrés Drimer - {currentYear}</div>
+    <div className='text-white text-center text-md mt-10 border-t pt-1'>@ <a href="mailto:andresdrimer@hotmail.com"> Andrés Drimer</a> - {currentYear}</div>
   )
 }
 

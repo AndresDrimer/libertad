@@ -26,6 +26,6 @@ min 21:48
 
 2) add a tiny celebration each time you complete one team, and a bigger one when completing full collection
 
-3) add a Row with previous libertadores champions sorted by year
+3) Check weight of escudos
 
-4) add sounds: BACKGROUND SOUND may not be good...
+4) paginacion o guia para dashboard 

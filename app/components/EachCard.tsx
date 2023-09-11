@@ -1,11 +1,13 @@
 "use client"
+import { CardComplete, CardWithTeam } from '@/types';
 import { Card } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 
-function EachCard({it}: {it: Card}) {
+
+function EachCard({it}: {it: CardComplete}) {
     const router = useRouter();
     
 
@@ -27,7 +29,7 @@ function EachCard({it}: {it: Card}) {
       });
      //router.push("/dashboard") don´t know why this doesn´t work as it should be
 
-     console.log("res", res.json())
+     //console.log("res", res.json())
      
      window.location.href = "/dashboard"
      };
@@ -40,8 +42,9 @@ function EachCard({it}: {it: Card}) {
     className={`border-2 rounded-sm text-center hover:scale-105 text-xl px-1 py-2  ${owned ? "bg-emerald-500 border-green-800" : "bg-sky-950"}`}
     onClick={()=>selectCard(it.id)}
   >
-   { it.team !=="CL" ? (<div><p className='text-2xl'>{it.teamNum}</p>
-   <p className='text-xs break-all'>{it.team.toUpperCase()}</p></div>) : (<div><p className='text-2xl'>{it.team} {it.teamNum}</p>
+   
+   { it.team?.teamName !=="CL" ? (<div><p className='text-2xl'>{it.teamNum}</p>
+   <p className='text-xs break-all'>{it.team?.teamName.toUpperCase()}</p></div>) : (<div><p className='text-2xl'>{it.team?.teamName} {it.teamNum}</p>
    </div>)} 
     
 

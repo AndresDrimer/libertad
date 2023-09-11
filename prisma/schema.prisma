@@ -11,25 +11,45 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String?
-  email      String   @unique
-  password   String
-  image      String?
-  role       String   @default("USER")
-  cards      Card[]   @relation(fields:[cardsId], references:[id])
-  cardsId    String[] @db.ObjectId
-  
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  name     String?
+  email    String   @unique
+  password String
+  image    String?
+  role     String   @default("USER")
+  cards    Card[]   @relation(fields: [cardsId], references: [id])
+  cardsId  String[] @db.ObjectId
 }
 
 model Card {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   absoluteNum Int
   playerName  String?
-  team        String
+  team        Team?    @relation(fields: [teamById], references: [id])
+  teamById    String?  @db.ObjectId
   teamNum     Int
-  owners      User[]  @relation(fields:[ownersById], references:[id])
+  owners      User[]   @relation(fields: [ownersById], references: [id])
   ownersById  String[] @db.ObjectId
 }
 
 //i´m using many to many(m-n) relation between model cards and users, becuase one User can own many cards and a Card can be owned by many users
+
+//new feature, i´m thinking of having team from a differnt Model Team, which will include id, teamName, image, yearsOfChampionship. This relation should be like: each card as an only Team. One to many? each card has only one team, and every team has various cards
+model Team {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamName             String
+  image                String?
+  yearsOfChampionship  String[]
+  country              Country?  @relation(fields: [countryById], references: [id])
+  countryById          String?   @db.ObjectId
+  isPlayingThisEdition Boolean
+  cards                Card[]
+}
+
+//every Team has only one country, a country can have various teams, one to many
+model Country {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  countryName String
+  image       String
+  teams       Team[]
+}

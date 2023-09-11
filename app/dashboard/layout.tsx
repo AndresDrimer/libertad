@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 import Carrousel from "../components/Carrousel";
+import Footer from "../components/Footer";
 
 const DashboradLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
@@ -19,6 +20,7 @@ const DashboradLayout = async ({ children }: { children: React.ReactNode }) => {
         </div>
      <Carrousel />
         {children}
+        <Footer />
       </NextAuthProvider>
     </div>
   );

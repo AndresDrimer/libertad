@@ -6,6 +6,9 @@ import { redirect } from "next/navigation";
 import { IoMdSettings } from "react-icons/io";
 import BgAudio from "./BgAudio";
 import ImgNav from "./ImgNav";
+import {TfiStatsUp} from "react-icons/tfi";
+import Link from "next/link";
+
 
 async function Navbar() {
   const session = await getServerSession(authOptions);
@@ -28,7 +31,10 @@ async function Navbar() {
 
       <div className="flex flex-col justify-center items-center gap-4">
         {" "}
-        <SignOutButton /> <BgAudio />
+        <SignOutButton /> 
+        <BgAudio />
+        <Link href="/dashboard/stats">
+        <TfiStatsUp  size="20px"/></Link>
       </div>
     </nav>
   );

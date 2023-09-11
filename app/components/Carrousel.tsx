@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { escudos } from "@/dbInternal";
 import Escudo from "./Escudo";
 import prisma from "@/prisma";
 import { TeamWithCountry } from "@/types";

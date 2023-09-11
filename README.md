@@ -29,3 +29,4 @@ min 21:48
 3) Check weight of escudos
 
 4) paginacion o guia para dashboard 
+..

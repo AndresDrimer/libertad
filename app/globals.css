@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+    .tablecell{
+        @apply border-2;
+    }
+    .title{
+        @apply font-bold;
+    }
+}

@@ -3,12 +3,9 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import { SignOutButton } from "../components/SignOutButton";
 
 import prisma from "@/prisma";
-import { Session } from "inspector";
 import Image from "next/image";
-import Footer from "@/app/components/Footer"
 import EachCard from "@/app/components/EachCard";
 import Completed from "@/app/components/Completed";
-
 
 
 
@@ -48,6 +45,12 @@ async function Dashboard() {
 
       <Completed userName={userName} userId={userId} cards={cardsComplete}/>
 
+
+<div>
+ 
+
+
+</div>
       {/* Cartas */}
       <div className="grid grid-cols-4 lg:grid-cols-12 gap-4 mx-auto px-4">
     {cardsComplete.map((it) => (

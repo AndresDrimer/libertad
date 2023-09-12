@@ -25,8 +25,8 @@ model Card {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   absoluteNum Int
   playerName  String?
-  team        Team?    @relation(fields: [teamById], references: [id])
-  teamById    String?  @db.ObjectId
+  team        Team    @relation(fields: [teamById], references: [id])
+  teamById    String  @db.ObjectId
   teamNum     Int
   owners      User[]   @relation(fields: [ownersById], references: [id])
   ownersById  String[] @db.ObjectId
@@ -38,7 +38,7 @@ model Card {
 model Team {
   id                   String   @id @default(auto()) @map("_id") @db.ObjectId
   teamName             String
-  image                String?
+  image                String
   yearsOfChampionship  String[]
   country              Country?  @relation(fields: [countryById], references: [id])
   countryById          String?   @db.ObjectId

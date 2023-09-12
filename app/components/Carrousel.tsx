@@ -9,7 +9,7 @@ async function Carrousel() {
 
   const teamsWithCountry= await prisma.team.findMany({include:{country: true}})
   
-  const teamsActuallyPlaying = teamsWithCountry.filter(it=>it.isPlayingThisEdition)
+  const teamsActuallyPlaying = teamsWithCountry.filter(it=>it.isPlayingThisEdition && it.teamName!=="CL")
 
   return (
     <div className="w-full h-full flex items-center justify-center">

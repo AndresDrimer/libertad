@@ -8,6 +8,7 @@ import BgAudio from "./BgAudio";
 import ImgNav from "./ImgNav";
 import {TfiStatsUp} from "react-icons/tfi";
 import Link from "next/link";
+import ImgNav2 from "./ImgNav2";
 
 
 async function Navbar() {
@@ -33,8 +34,8 @@ async function Navbar() {
         {" "}
         <SignOutButton /> 
         <BgAudio />
-        <Link href="/dashboard/stats">
-        <TfiStatsUp  size="20px"/></Link>
+        <ImgNav2 />
+        
       </div>
     </nav>
   );

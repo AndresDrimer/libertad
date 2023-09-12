@@ -33,7 +33,7 @@ async function TeamPage({ params }: { params: Params }) {
       </div>
 
 <div className="max-w-[400px] mx-auto">
-      <div className="flex items-center gap-2 justify-center mt-8 border-2 rounded-md w-1/2 mx-auto py-1">
+      <div className="flex items-center gap-2 justify-center mt-8 border-2 rounded-md w-3/4 md:w-1/2 mx-auto py-1">
         <Image
           src={`/${actualTeam?.country?.image}`}
           alt="bandera"

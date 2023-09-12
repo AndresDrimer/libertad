@@ -1,3 +1,21 @@
+export type UserWithCards = {
+  id: string;
+  name: string | null;
+  email: string;
+  password: string;
+  image: string | null;
+  role: string;
+  cardsId: string[];
+  cards: {
+    id: string;
+    absoluteNum: number;
+    playerName: string | null;
+    teamById: string | null;
+    teamNum: number;
+    ownersById: string[];
+  }[];
+};
+
 export type CardWithTeam = {
   id: string;
   absoluteNum: number;

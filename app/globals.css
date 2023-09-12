@@ -8,6 +8,6 @@
         @apply border-2;
     }
     .title{
-        @apply font-bold;
+        @apply  bg-gray-300/50;
     }
 }

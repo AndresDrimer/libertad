@@ -10,7 +10,7 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 const Campeones = async () => {
 
   const teamsWithCountry: TeamWithCountry[]= await prisma.team.findMany({include:{country: true}, orderBy:{yearsOfChampionship: "desc"}})
-  console.log(teamsWithCountry)
+
   const championTeams = teamsWithCountry.filter((it) => it.yearsOfChampionship.every(it=>it.length>1));
 
   

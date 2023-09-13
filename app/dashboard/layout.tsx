@@ -5,20 +5,22 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 import Carrousel from "../components/Carrousel";
+import Footer from "../components/Footer";
 
 const DashboradLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
   return (
-    <div className="bg-gradient-to-r from-black to-[#302d67] text-white p-4">
+    <div className="bg-gradient-to-r from-black to-[#302d67] text-white p-4 min-h-screen flex flex-col justify-between">
       <NextAuthProvider>
         <Navbar />
         <div>
-          <p className="text-xl border-b text-center">
-            Hola {session?.user?.name?.toUpperCase()} !
+          <p className="text-xl border-b text-center py-1">⚽ 
+            Hola {session?.user?.name?.toUpperCase()} ! ⚽
           </p>
         </div>
      <Carrousel />
         {children}
+        <Footer />
       </NextAuthProvider>
     </div>
   );

@@ -27,11 +27,16 @@ const config: Config = {
           "0%": {transform: "translateX(0%)" },
           "100%": {transform: "translateX(-60%)" },
         },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" }
+        },
       },
       animation: {
         "useSlideshow": "slideshow 10s linear infinite",
         "useSlideShowMd": "slideshowMd 14s linear infinite",
         "useSlideShowXl": "slideshowXl 30s linear infinite",
+        "useWiggle": "wiggle 1s ease-in-out infinite"
       },
     },
   },

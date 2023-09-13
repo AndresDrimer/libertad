@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 function ImgNav() {
     const path = usePathname();
-    console.log("path", path)
+
   return (
 <div className='cursor-pointer'>
     {path==="/campeones" ? (<div className="flex flex-col items-center justify-center">

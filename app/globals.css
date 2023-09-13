@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+    .tablecell{
+        @apply border-2;
+    }
+    .title{
+        @apply  bg-gray-300/50;
+    }
+    .scrollers{
+        @apply border-2 rounded-lg px-2 text-xs border-gray-500 text-gray-100/50;
+    }
+}

@@ -27,7 +27,7 @@ function BgAudio() {
   return (
     <div>
       <button onClick={handleSoundToggle} className="cursor-pointer">
-        {!soundOn ? <GoMute /> : <GoUnmute />}
+        {!soundOn ? <GoMute size="20px"/> : <GoUnmute size="20px"/>}
       </button>
       <audio ref={audioRef} src="/sounds/hinchada-loop-4bars.mp3" loop />
     </div>

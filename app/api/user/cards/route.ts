@@ -21,6 +21,7 @@ export const PATCH = async (req: Request) => {
 //to unmark
 if(previousOwners.includes(userId)){
   const removeFromPreviousOwners = previousOwners.filter(it=> it!==userId)
+  
   const unOwnCard = await prisma.card.update({
     where: {id: cardId},
     data: {

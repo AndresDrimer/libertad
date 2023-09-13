@@ -20,16 +20,7 @@ export default async function Home() {
         fill
        
       />
-      {/*
-<div>
-<Image
-src={"/logo-liber.png"}
-alt="logo"
-className= "relative mx-auto"
-width={500}
-height={500}
-
-/></div>*/}
+      
 
       {/*bloque*/}
       <div className="text-center relative z-10  text-3xl py-2 text-bolder bg-black/80 w-2/5 lg:w-1/3 h-screen text-white flex flex-col justify-center items-center">

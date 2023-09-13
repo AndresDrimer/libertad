@@ -11,7 +11,7 @@ function LoginPage() {
 
   const handleForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    signIn("credentials", { ...newUser, callbackUrl: "/dashboard" });
+    signIn("credentials", { ...newUser, callbackUrl: "/dashboard"});
     //de esta manera cuando autoriza, me envia a esa pagina
   };
 

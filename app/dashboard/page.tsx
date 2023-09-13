@@ -6,6 +6,8 @@ import prisma from "@/prisma";
 import Image from "next/image";
 import EachCard from "@/app/components/EachCard";
 import Completed from "@/app/components/Completed";
+import TeamsCompleted from "@/app/components/TeamsCompleted";
+
 
 
 
@@ -23,7 +25,7 @@ async function Dashboard() {
  
   return (
     <section className=" ">     
-      <div className="w-full flex flex-col justify-center items-center mb-8">
+      <div className="w-full flex flex-col justify-center items-center mb-2">
         <Image
           src={"/logo-liber.png"}
           alt="logo"
@@ -42,8 +44,9 @@ async function Dashboard() {
         </p>
 
       </div>
-
-      <Completed userName={userName} userId={userId} cards={cardsComplete}/>
+  
+    {/*<TeamsCompleted userName={userName} userId={userId} cards={cardsComplete}/>
+     */}
 
 
 <div>

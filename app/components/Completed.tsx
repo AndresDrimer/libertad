@@ -1,31 +1,45 @@
 "use client"
-import { useState } from 'react'
-import ModalTriumph from './ModalTriumph'
-import { Card } from '@prisma/client'
-import { CardComplete } from '@/types'
+import { useEffect, useState, useRef } from 'react';
+import ModalTriumph from './ModalTriumph';
+import { CardComplete } from '@/types';
 
-function Completed({userName, userId, cards}:{userName: string, userId: string, cards: CardComplete[]}) {
-    const [teamCompleted, setTeamCompleted] = useState(false)
+type CompletedTeams = {
+  teamName: string;
+  image: string | undefined;
+}[];
 
+function Completed({
+  userName,
+  userId,
+  cards,
+  completedTeams,
+}: {
+  userName: string;
+  userId: string;
+  cards: CardComplete[];
+  completedTeams: CompletedTeams;
+}) {
+  const [teamCompleted, setTeamCompleted] = useState(false);
+  const prevCompletedTeams = useRef<CompletedTeams>(completedTeams);
 
-    //get an array of teams
-  //  const teams = cards.map(it=> it.team)
-  // const filteredTeams = teams.filter((value, index, self) => {
- //   return self.indexOf(value) === index;
-//  });
-    
-    
+  useEffect(() => {
+    if (prevCompletedTeams.current.length < completedTeams.length) {
+      console.log('use effect actua');
+      setTeamCompleted(true);
+    }
 
-    //method for every team
-  //  const cardsAucas = cards.filter(it=> it.team ==="Aucas");
- //   const completedAucas = cardsAucas.every(it=>it.ownersById.includes(userId));
-    
-    //get a programatical way of having all of them
+    prevCompletedTeams.current = completedTeams;
+  }, [completedTeams]);
 
-  
-    return (
-    <div className=''>{teamCompleted && <ModalTriumph userName={userName} setTeamCompleted={setTeamCompleted} />}</div>
-  )
+  console.log('ahora', completedTeams);
+
+  return (
+    <div className="">
+      {teamCompleted && (
+        <ModalTriumph userName={userName} setTeamCompleted={setTeamCompleted} />
+      )}
+    </div>
+  );
 }
 
-export default Completed
+export default Completed;

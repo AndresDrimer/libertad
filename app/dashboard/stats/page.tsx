@@ -10,12 +10,12 @@ const StatsPage = async () => {
 
   const userId = session?.user.id ?? "";
 
-  const cardsTotal = await prisma.card.findMany({});
+  const cardsTotal = await prisma.card.findMany({orderBy:{absoluteNum: "asc"}});
 
   const cardsOwned = await prisma.card.findMany({
     where: {
       ownersById: { has: session?.user.id },
-    },
+    },orderBy:{absoluteNum: "asc"}
   });
 
   const MissingCardsQuantity = cardsTotal.length - cardsOwned.length;
@@ -25,7 +25,7 @@ const StatsPage = async () => {
     (it) => !it.ownersById.includes(userId)
   );
 
-  // can´t make exact correct query to obtain teams completed by user, so I will be using JS to fill the gap and taking 17 as the number of cards to complete a collection.It does not cover "CL" team, but it is not a team but a special section (and it has no image asociated)
+  // method to get completed teams, as they have 17 cards each team
 
   const allTeams = await prisma.team.findMany({});
 
@@ -67,7 +67,7 @@ const StatsPage = async () => {
       };
     });
 
-  console.log("aca", completedTeams);
+
 
   return (
     <div className="mx-auto text-center">
@@ -78,19 +78,19 @@ const StatsPage = async () => {
         </p>
       <div className="grid grid-cols-1 grid-rows-2 text-center md:w-1/2 mx-auto ">
         <div>
-          <div className="tablecell title">Marcadas</div><div className="tablecell text-5xl text-emerald-500">
+          <div className="tablecell title">Marcadas</div><div className="tablecell text-5xl text-emerald-500 py-2">
             {cardsOwned.length}
           </div>
           <div className="tablecell title">Faltantes</div>
 
           
-          <div className="tablecell text-5xl text-red-500">
+          <div className="tablecell text-5xl py-2 text-red-500">
             {MissingCardsQuantity}
           </div>
         </div>
         <div>
           <div className="tablecell title">Equipos completados</div>
-          <div className="tablecell grid grid-cols-4 gap-1 items-center p-2">
+          <div className="tablecell grid grid-cols-4 gap-1 sm:grid-cols-5 lg:grid-cols-6 items-center p-2">
             {completedTeams.map((it) => (
               <Image
                 src={it.image!}
@@ -99,23 +99,24 @@ const StatsPage = async () => {
                 alt="escudo"
                 key={it.teamName}
                 style={{ width: "auto", height: "auto" }}
-                className="p-1"
+                className="px-1 py-2"
               />
             ))}
           </div>
         </div>
       </div>
       <div>
-        <div className="mt-6">
 
-         <p className="bolder hover:scale-110 text-2xl md:text-5xl mt-8 mb-4">
+        <div>
+
+         <p className="bolder hover:scale-110 text-2xl md:text-5xl mb-4">
           DETALLE
         </p>
         <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-          - LATE -
+           "LATE" 
         </h1>
 
-          <div className="grid grid-cols-6 gap-4 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
+          <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
             {cardsOwned.map((it) => (
               <span
                 className="border-2 rounded-md px-1 mx-1 bg-emerald-500/50"
@@ -127,11 +128,11 @@ const StatsPage = async () => {
           </div>
         </div>
         
-        <div className="mt-6">
+        <div className="mt-12">
         <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-          - NOLA -
+           "NOLA" 
         </h1>
-          <div className="grid grid-cols-6 gap-1 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
+          <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
           {cardsNotOwned.map((it) => (
               <span className="border-2 rounded-md px-1 mx-1 bg-red-500/50" key={it.id}>
                 {it.absoluteNum}

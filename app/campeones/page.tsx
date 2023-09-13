@@ -4,10 +4,12 @@ import Footer from "../components/Footer";
 import prisma from "@/prisma";
 import { TeamWithCountry } from "@/types";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 const Campeones = async () => {
 
-  const teamsWithCountry: TeamWithCountry[]= await prisma.team.findMany({include:{country: true}})
+  const teamsWithCountry: TeamWithCountry[]= await prisma.team.findMany({include:{country: true}, orderBy:{yearsOfChampionship: "desc"}})
   console.log(teamsWithCountry)
   const championTeams = teamsWithCountry.filter((it) => it.yearsOfChampionship.every(it=>it.length>1));
 

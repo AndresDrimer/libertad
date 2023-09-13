@@ -113,7 +113,7 @@ const StatsPage = async () => {
           DETALLE
         </p>
         <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-           "LATE" 
+        &ldquo;LATE&rdquo;
         </h1>
 
           <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
@@ -130,7 +130,7 @@ const StatsPage = async () => {
         
         <div className="mt-12">
         <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-           "NOLA" 
+        &ldquo;NOLA&rdquo; 
         </h1>
           <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
           {cardsNotOwned.map((it) => (

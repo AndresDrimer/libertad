@@ -38,6 +38,7 @@ async function Dashboard() {
             width={400}
             height={385}
             sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
+            priority
           />
         </div>
 

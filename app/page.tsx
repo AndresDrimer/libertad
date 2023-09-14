@@ -37,7 +37,7 @@ export default async function Home() {
                 width={400}
                 height={385}
                 className="px-8"
-                sizes="(min-width: 1330px) 400px, (min-width: 1040px) calc(22.08vw + 117px), 38.89vw"
+                sizes="(min-width: 1280px) 336px, (min-width: 1040px) calc(24.09vw + 32px), calc(38.89vw - 61px)"
               />
             </div>
             <div className="">

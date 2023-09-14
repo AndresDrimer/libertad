@@ -5,6 +5,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import bombonera from '@/public/bombonera.jpg'
+import logoLiber from "@/public/logo-liber.png"
+
 function LoginPage() {
   const router = useRouter();
 
@@ -31,12 +33,13 @@ function LoginPage() {
        
         <div className=" relative w-3/4 sm:w-1/2 mx-auto">
           <Image
-            src={"/logo-liber.png"}
+            src={logoLiber}
             alt="logo"
             className=""
             width={400}
             height={385}
-            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
+            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw - 18px), (min-width: 640px) calc(37.5vw - 32px), calc(56.25vw - 48px)"
+            priority
           />
         </div>
 

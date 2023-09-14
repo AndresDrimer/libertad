@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import canchaRacing from "@/public/racing.jpg"
+import logoLiber from "@/public/logo-liber.png"
 function RegisterPage() {
   const router = useRouter();
 
@@ -54,12 +55,13 @@ function RegisterPage() {
     
      <div className=" justify-center relative w-3/4 md:w-1/2 mx-auto">
           <Image
-            src={"/logo-liber.png"}
+            src={logoLiber}
             alt="logo"
             className=""
             width={400}
             height={385}
-            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
+            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw - 18px), (min-width: 640px) calc(37.5vw - 32px), calc(56.25vw - 48px)"
+            priority
           />
         </div>
 

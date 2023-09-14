@@ -3,20 +3,17 @@ import { CardComplete, CardWithTeam } from '@/types';
 import { Card } from '@prisma/client'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 
 
 function EachCard({it}: {it: CardComplete}) {
     const router = useRouter();
-    
-
-   
+       
     const {data: session} = useSession();
     const userId: string  = session?.user.id ?? ""
 
 
-//Now it is working but it´s a littel annoying to have to wait to refresh page to change color, maybe it can be achived other way... useEffect??
+//Now it is working but it´s a littel annoying to have to wait to refresh page to actualice cards owned
 
 
     const selectCard = async (cardId: string) => { 
@@ -27,10 +24,7 @@ function EachCard({it}: {it: CardComplete}) {
         },
         body: JSON.stringify({cardId, userId})
       });
-     //router.push("/dashboard") don´t know why this doesn´t work as it should be
-
-     //console.log("res", res.json())
-     
+     //router.push("/dashboard") don´t know why this doesn´t work as it should be:
      window.location.href = "/dashboard"
      };
 
@@ -39,7 +33,7 @@ function EachCard({it}: {it: CardComplete}) {
   return (
     <button
     key={it.absoluteNum}
-    className={`border-2 rounded-sm text-center hover:scale-105 text-xl px-1 py-2  ${owned ? "bg-emerald-500 border-green-800" : "bg-sky-950"}`}
+    className={`border-2 rounded-sm text-center hover:scale-110 text-xl px-1 py-2   ${owned ? "bg-gradient-to-l from-emerald-500 to-emerald-600 border-green-800 rounded-lg hover:tracking-widest active:grayscale" : "bg-sky-950"}`}
     onClick={()=>selectCard(it.id)}
   >
    

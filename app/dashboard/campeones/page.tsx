@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 import prisma from "@/prisma";
 import { TeamWithCountry } from "@/types";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import { authOptions } from "../../api/auth/[...nextauth]/authOptions";
 
 const Campeones = async () => {
 
@@ -18,7 +18,7 @@ const Campeones = async () => {
     <div className="">
       <div className="w-full flex flex-col justify-center items-center mb-8">
         <h1 className="text-md mt-4 text-[#f2c464] text-xl md:text-5xl text-normal">
-          - CAMPEONES -
+          CAMPEONES:
         </h1>
 
         <p className="bolder hover:scale-110 text-2xl md:text-5xl">

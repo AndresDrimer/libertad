@@ -9,6 +9,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "amarillo-claro": "#facf67",
+        "amarillo-oscuro": "#50361d",
+        "marron": "#50361d",
+      },  
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

@@ -13,7 +13,7 @@ async function TeamPage({ params }: { params: Params }) {
   return (
     <div className="w-full mx-auto text-center">
       <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mt-4">
-        - EQUIPOS -
+        EQUIPOS:
       </h1>
 
       <p className="bolder hover:scale-110 text-2xl md:text-5xl">
@@ -25,8 +25,8 @@ async function TeamPage({ params }: { params: Params }) {
         <Image
           src={actualTeam?.image!}
           alt="escudo"
-          width={200}
-          height={200}
+          width={250}
+          height={250}
           style={{ width: "auto", height: "auto" }}
           priority
         />
@@ -53,7 +53,7 @@ async function TeamPage({ params }: { params: Params }) {
           width={130}
           height={130}
           style={{ width: "auto", height: "auto" }}
-          className="relative"
+          className=""
         />
      
 

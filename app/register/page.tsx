@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import canchaRacing from "@/public/racing.jpg"
 function RegisterPage() {
   const router = useRouter();
 
@@ -38,21 +38,32 @@ function RegisterPage() {
 
   return (
    
-    <div className="text-center mx-auto bg-[url('/racing.jpg')] bg-no-repeat bg-center"> 
+    <div className="relative"> 
+<Image
+     src={canchaRacing}
+     alt="cancha-background"
+     className="z-[-100] object-cover"
+     fill
+     sizes="100vw"
+     placeholder="blur"
+     priority />
+
      <div className="h-screen flex flex-col justify-center  bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2 lg:w-1/4">
 
      
     
-      <div className="w-full flex justify-center ">
+     <div className=" justify-center relative w-3/4 md:w-1/2 mx-auto">
           <Image
             src={"/logo-liber.png"}
             alt="logo"
-            className="relative"
-            width={100}
-            height={100}
+            className=""
+            width={400}
+            height={385}
+            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
           />
         </div>
-        <p className="text-right">
+
+        <p className="text-right text-lg">
           <Link href="/login">Need to <span className="text-blue-500 hover:text-blue-700">Login</span>?</Link>
         </p>
         <hr className="border-2 border-x-blue-100 w-full"/>

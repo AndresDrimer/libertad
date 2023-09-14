@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import bombonera from '@/public/bombonera.jpg'
 function LoginPage() {
   const router = useRouter();
 
@@ -16,21 +17,30 @@ function LoginPage() {
   };
 
   return (
-    <div className="bg-[url('/bombonera.jpg')] bg-no-repeat bg-center">
-     
-      <div className="h-screen flex flex-col justify-center bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2 lg:w-1/4">
+    <div className="relative">
+     <Image
+     src={bombonera}
+     alt="cancha-background"
+     className="z-[-100] object-cover"
+     fill
+     sizes="100vw"
+     placeholder="blur"
+     priority />
+
+      <div className="h-screen flex flex-col justify-center bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2  z-[0]">
        
-        <div className="w-full flex justify-center ">
+        <div className=" relative w-3/4 sm:w-1/2 mx-auto">
           <Image
             src={"/logo-liber.png"}
             alt="logo"
-            className="relative"
-            width={200}
-            height={200}
+            className=""
+            width={400}
+            height={385}
+            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
           />
         </div>
 
-        <p className="text-right">
+        <p className="text-right text-lg ">
           <Link href="/register">Need to <span className="text-blue-500 hover:text-blue-700">Register</span>?</Link>
         </p>
         <hr className="border-2 border-x-blue-100"/>

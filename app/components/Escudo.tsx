@@ -2,7 +2,6 @@
 import { TeamWithCountry } from "@/types";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function Escudo({ it }: { it: TeamWithCountry }) {
@@ -21,6 +20,7 @@ function Escudo({ it }: { it: TeamWithCountry }) {
       height={35}
       className="px-30 cursor-pointer hover:scale-110 transform  active:animate-useWiggle"
       style={{ width: "auto", height: "auto" }}
+      
       onClick={handleClick}
     />
   );

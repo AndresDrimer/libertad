@@ -6,7 +6,7 @@ import { NextResponse } from "next/server"
 export const PATCH = async (req: Request) => {
     try {
           const { cardId, userId } = await req.json();
-  console.log("cardId: ", cardId, "userId", userId)
+  
     
       //find card by Id
       const card = await prisma.card.findUnique({

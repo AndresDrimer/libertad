@@ -1,3 +1,4 @@
+ // @ts-ignore
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import prisma from "@/prisma";
@@ -5,6 +6,9 @@ import Image from "next/image";
 import EachCard from "@/app/components/EachCard";
 import logoLiber from "@/public/logo-liber.png"
 import TeamsCompleted from "@/app/components/TeamsCompleted";
+import { CardComplete } from "@/types";
+import { format } from "path";
+import { revalidateTag } from "next/cache";
 
 async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -12,17 +16,20 @@ async function Dashboard() {
   const userId: string = session?.user?.id ?? "";
   const userName: string = session?.user?.name ?? "";
 
-  const cardsWithTeam = await prisma.card.findMany({
-    orderBy: { absoluteNum: "asc" },
-    include: { team: true },
-  });
 
-  const cardsComplete = await prisma.card.findMany({
-    orderBy: { absoluteNum: "asc" },
-    include: { team: { include: { country: true } } },
-  });
+const res = await fetch("http://localhost:3000/api/cards", {
+  method: "GET",
+  next: {tags: ["cardsComplete"]},
+  
+}) 
 
-  const cards = await prisma.card.findMany({ orderBy: { absoluteNum: "asc" } });
+if(!res.ok) { throw new Error(`HTTP error! status: ${res.status}`);};
+
+
+const {cardsComplete}  = await res.json() || []
+
+
+
 
   return (
     <section className="">
@@ -37,7 +44,7 @@ async function Dashboard() {
             className="mt-10"
             width={400}
             height={385}
-            sizes="(min-width: 1820px) 400px, (min-width: 780px) calc(23.24vw + 18px), calc(56.3vw - 48px)"
+            sizes="(min-width: 2140px) 400px, (min-width: 780px) 18.66vw, (min-width: 640px) calc(25vw - 8px), calc(33.44vw - 11px)"
             priority
           />
         </div>
@@ -51,16 +58,26 @@ async function Dashboard() {
         </p>
       </div>
 </div>
+
+
       {/*<TeamsCompleted userName={userName} userId={userId} cards={cardsComplete}/>
        */}
 
       <div className="mt-10">
+        
       {/* Cartas */}
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mx-auto px-4">
-        {cardsComplete.map((it) => (
+     <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mx-auto px-4">  
+
+        {cardsComplete.map((it: CardComplete) => (
           <EachCard it={it} key={it.id} />
-        ))}
-      </div></div>
+        ))} 
+ 
+
+
+      </div> 
+      
+      
+      </div>
     </section>
   );
 }

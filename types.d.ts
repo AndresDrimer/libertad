@@ -53,7 +53,7 @@ export type CardComplete = {
     countryById: string | null;
     isPlayingThisEdition: boolean;
   } | null;
-};
+} ;
 
 export type TeamWithCountry = {
         country: {

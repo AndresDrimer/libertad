@@ -38,6 +38,7 @@ export default async function Home() {
                 height={385}
                 className="px-8"
                 sizes="(min-width: 1280px) 336px, (min-width: 1040px) calc(24.09vw + 32px), calc(38.89vw - 61px)"
+                priority
               />
             </div>
             <div className="">

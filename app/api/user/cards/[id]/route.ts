@@ -17,6 +17,7 @@ export async function PATCH(request:Request, {params}:{params: string}){
 return NextResponse.json({userId, cardId})
 }
 catch(error){
-    console.log(error)
+    console.log(error);
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
 }
 }

@@ -11,7 +11,7 @@ export const PATCH = async (request) => {
 
     
     if(!newName || !userId){
-        return console.log("new Name incorrect")
+        return NextResponse.json({message: "Some fileds may be missing"}, {status:400})
     }
 try{
     const user  = await prisma.user.update({

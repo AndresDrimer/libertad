@@ -12,17 +12,13 @@ async function Dashboard() {
   const userId: string = session?.user?.id ?? "";
   const userName: string = session?.user?.name ?? "";
 
-  const cardsWithTeam = await prisma.card.findMany({
-    orderBy: { absoluteNum: "asc" },
-    include: { team: true },
-  });
+ 
 
   const cardsComplete = await prisma.card.findMany({
     orderBy: { absoluteNum: "asc" },
     include: { team: { include: { country: true } } },
   });
 
-  const cards = await prisma.card.findMany({ orderBy: { absoluteNum: "asc" } });
 
   return (
     <section className="">

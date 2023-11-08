@@ -10,7 +10,7 @@ export const GET = async () =>{
 
   if(!cardsComplete) {return NextResponse.json({ error: "No cards found" }, { status: 404 });};
 
-  return NextResponse.json({cardsComplete}, {status:200})
+  return NextResponse.json(cardsComplete, {status:200})
 
     } catch (error) {
         return NextResponse.json({error: "could not connect DB"}, {status:500})

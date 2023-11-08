@@ -1,6 +1,6 @@
 "use server"
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 
 
@@ -14,5 +14,5 @@ export const selectCard = async (cardId: string, userId:string) => {
       body: JSON.stringify({cardId, userId})
     });
    
-   revalidateTag("cardsComplete")
+   revalidatePath("http://localhost:3000/dashboard")
    };

@@ -1,22 +1,19 @@
 "use client"
-import { CardComplete, CardWithTeam } from '@/types';
-import { Card } from '@prisma/client'
+import { CardComplete } from '@/types';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-import { selectCard } from '../actions/server-actions';
 
 
 
-function EachCard({it}: {it: CardComplete}) {
+function EachCard({it, selectCard}: {it: CardComplete, selectCard: (cardId: string, userId: string) => Promise<void>}) {
     const router = useRouter();
        
     const {data: session} = useSession();
     const userId: string  = session?.user.id ?? ""
 
-
-
-
     const owned = it.ownersById.includes(userId)
+
+
 
   return (
     <button

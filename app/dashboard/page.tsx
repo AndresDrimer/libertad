@@ -5,6 +5,14 @@ import Image from "next/image";
 import EachCard from "@/app/components/EachCard";
 import logoLiber from "@/public/logo-liber.png"
 import TeamsCompleted from "@/app/components/TeamsCompleted";
+import { CardComplete } from "@/types";
+import { revalidatePath } from "next/cache";
+import {toast} from "react-hot-toast";
+
+
+
+export const revalidate = "true"
+
 
 async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -12,12 +20,19 @@ async function Dashboard() {
   const userId: string = session?.user?.id ?? "";
   const userName: string = session?.user?.name ?? "";
 
- 
+  const cardsComplete: CardComplete[] = await prisma.card.findMany({ orderBy: {absoluteNum: "asc"}, include: {team: {include: {country: true}}}});
 
-  const cardsComplete = await prisma.card.findMany({
-    orderBy: { absoluteNum: "asc" },
-    include: { team: { include: { country: true } } },
-  });
+ const selectCard = async (cardId: string, userId:string) => { 
+  "use server"
+    const res = await fetch(`${process.env.BASE_URL}/api/user/cards`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({cardId, userId})
+    });
+    revalidatePath('/dashboard')
+   };
 
 
   return (
@@ -54,7 +69,7 @@ async function Dashboard() {
       {/* Cartas */}
       <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mx-auto px-4">
         {cardsComplete.map((it) => (
-          <EachCard it={it} key={it.id} />
+          <EachCard it={it} key={it.id} selectCard={selectCard}/>
         ))}
       </div></div>
     </section>

@@ -6,12 +6,14 @@ import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 import Carrousel from "../components/Carrousel";
 import Footer from "../components/Footer";
+import ToasterContext from "../context/ToasterContext";
 
 const DashboradLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
   return (
     <div className="bg-gradient-to-r from-black to-[#302d67] text-white p-4 min-h-screen flex flex-col justify-between">
       <NextAuthProvider>
+        <ToasterContext />
         <Navbar />
        
        

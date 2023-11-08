@@ -8,6 +8,7 @@ import TeamsCompleted from "@/app/components/TeamsCompleted";
 import { CardComplete } from "@/types";
 import { revalidatePath } from "next/cache";
 import {toast} from "react-hot-toast";
+import { selectCard } from "../actions/server-actions";
 
 
 
@@ -22,17 +23,6 @@ async function Dashboard() {
 
   const cardsComplete: CardComplete[] = await prisma.card.findMany({ orderBy: {absoluteNum: "asc"}, include: {team: {include: {country: true}}}});
 
- const selectCard = async (cardId: string, userId:string) => { 
-  "use server"
-    const res = await fetch(`${process.env.BASE_URL}/api/user/cards`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({cardId, userId})
-    });
-    revalidatePath('/dashboard')
-   };
 
 
   return (

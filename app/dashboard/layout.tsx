@@ -11,14 +11,10 @@ const DashboradLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
   return (
     <div className="bg-gradient-to-r from-black to-[#302d67] text-white p-4 min-h-screen flex flex-col justify-between">
-      <NextAuthProvider>
-        <Navbar />
-       
-       
-     <Carrousel />
-        {children}
-        <Footer />
-      </NextAuthProvider>
+      <Navbar />
+      <Carrousel />
+      {children}
+      <Footer />
     </div>
   );
 };

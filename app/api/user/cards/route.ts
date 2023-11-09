@@ -1,4 +1,5 @@
 import prisma from "@/prisma"
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server"
 
 
@@ -7,14 +8,11 @@ export const PATCH = async (req: Request) => {
     try {
           const { cardId, userId } = await req.json();
   
-    
       //find card by Id
       const card = await prisma.card.findUnique({
         where: {id: cardId},
         include: {owners: true}
       });
-
-   
 
       const previousOwners = card?.owners.map(owner => owner.id) || []
     
@@ -29,7 +27,8 @@ if(previousOwners.includes(userId)){
         set: [...removeFromPreviousOwners]
       }
     }
-  })
+  });
+
   return NextResponse.json({message: "Owner removed"}, {status: 201})
 }
     //to mark
@@ -41,8 +40,6 @@ if(previousOwners.includes(userId)){
         },
       },
     });
-
- 
 
     return NextResponse.json({ message: 'Owner added' }, { status: 201 });
     } catch (error) {

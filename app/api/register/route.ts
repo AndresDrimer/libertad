@@ -4,6 +4,8 @@ import { User } from "@prisma/client";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt"
 
+
+  {/*send register form info to db: check existence, hash password and create new user entry, and return user created*/}
 export const POST = async(request: Request) => {
     try {
         const body =  await request.json();

@@ -6,15 +6,18 @@ import Image from "next/image";
 import canchaRiver from "@/public/cesped-monumental.jpg"
 import logoLib from "@/public/logo-liber.png"
 export default async function Home() {
-  const session = await getServerSession(authOptions);
 
+
+  {/* if logged, redirected to dashboard*/}
+  const session = await getServerSession(authOptions);
   if (session?.user) {
     redirect("/dashboard");
   }
 
   return (
     <main className="relative">
-      <div className="">
+      {/*background*/}
+      <div>
         <Image
           src={canchaRiver}
           alt="background"
@@ -26,7 +29,7 @@ export default async function Home() {
         />
       </div>
 
-      {/*bloque*/}
+      {/*button to go login/register*/}
       <div className="text-center relative z-10  text-3xl  text-bolder bg-black/80 w-2/5 lg:w-1/3 h-screen text-white flex flex-col justify-center items-center">
         <div className="absolute cursor-pointer">
           <Link href="/login">
@@ -52,6 +55,8 @@ export default async function Home() {
           </Link>
         </div>
       </div>
+
+
     </main>
   );
 }

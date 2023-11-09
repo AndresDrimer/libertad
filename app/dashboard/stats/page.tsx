@@ -7,15 +7,19 @@ import Image from "next/image";
 
 const StatsPage = async () => {
   const session = await getServerSession(authOptions);
-
   const userId = session?.user.id ?? "";
 
-  const cardsTotal = await prisma.card.findMany({orderBy:{absoluteNum: "asc"}});
+   {/* get cartas totales de la db*/}
+  const cardsTotal = await prisma.card.findMany({
+    orderBy: { absoluteNum: "asc" },
+  });
 
+   {/* get cartas que tengo, de la db*/}
   const cardsOwned = await prisma.card.findMany({
     where: {
       ownersById: { has: session?.user.id },
-    },orderBy:{absoluteNum: "asc"}
+    },
+    orderBy: { absoluteNum: "asc" },
   });
 
   const MissingCardsQuantity = cardsTotal.length - cardsOwned.length;
@@ -25,8 +29,9 @@ const StatsPage = async () => {
     (it) => !it.ownersById.includes(userId)
   );
 
-  // method to get completed teams, as they have 17 cards each team
 
+  
+  // method to get completed teams, as they have 17 cards each team
   const allTeams = await prisma.team.findMany({});
 
   const cardsWithTeam = await prisma.card.findMany({
@@ -67,23 +72,23 @@ const StatsPage = async () => {
       };
     });
 
-
-
   return (
     <div className="mx-auto text-center">
-      
-      {/* cuadro dato duro*/}
+
+      {/* titulo */}
       <p className="bolder hover:scale-110 text-2xl md:text-5xl mt-8 mb-4">
-          TUS FIGUS
-        </p>
+        MIS FIGUS
+      </p>
+
+       {/* cuadro*/}
       <div className="grid grid-cols-1 grid-rows-2 text-center md:w-1/2 mx-auto ">
         <div>
-          <div className="tablecell title">Marcadas</div><div className="tablecell text-5xl text-emerald-500 py-2">
+          <div className="tablecell title">Ya tengo</div>
+          <div className="tablecell text-5xl text-emerald-500 py-2">
             {cardsOwned.length}
           </div>
-          <div className="tablecell title">Faltantes</div>
+          <div className="tablecell title">Me faltan</div>
 
-          
           <div className="tablecell text-5xl py-2 text-red-500">
             {MissingCardsQuantity}
           </div>
@@ -105,16 +110,16 @@ const StatsPage = async () => {
           </div>
         </div>
       </div>
+
+       {/* detalle */}
       <div>
-
         <div>
-
-         <p className="bolder hover:scale-110 text-2xl md:text-5xl mb-4">
-          DETALLE
-        </p>
-        <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-        &ldquo;LATE&rdquo;
-        </h1>
+          <p className="bolder hover:scale-110 text-2xl md:text-5xl mb-4">
+            DETALLE
+          </p>
+          <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
+            &ldquo;YA TENGO&rdquo;
+          </h1>
 
           <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
             {cardsOwned.map((it) => (
@@ -127,20 +132,24 @@ const StatsPage = async () => {
             ))}
           </div>
         </div>
-        
+
         <div className="mt-12">
-        <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
-        &ldquo;NOLA&rdquo; 
-        </h1>
+          <h1 className="text-md text-[#f2c464] text-xl md:text-5xl text-normal mb-6">
+            &ldquo;ME FALTAN&rdquo;
+          </h1>
           <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 justify-center place-items-center bg-gray-300/50 p-6 rounded-lg">
-          {cardsNotOwned.map((it) => (
-              <span className="border-2 rounded-md px-1 mx-1 bg-red-500/50" key={it.id}>
+            {cardsNotOwned.map((it) => (
+              <span
+                className="border-2 rounded-md px-1 mx-1 bg-red-500/50"
+                key={it.id}
+              >
                 {it.absoluteNum}
               </span>
             ))}
           </div>
         </div>
       </div>
+
     </div>
   );
 };

@@ -8,18 +8,20 @@ import bombonera from '@/public/bombonera.jpg'
 import logoLiber from "@/public/logo-liber.png"
 
 function LoginPage() {
-  const router = useRouter();
 
+  const router = useRouter();
   const [newUser, setNewUser] = useState({ name: "", password: "" });
 
   const handleForm = async (e: React.FormEvent) => {
     e.preventDefault();
     signIn("credentials", { ...newUser, callbackUrl: "/dashboard"});
-    //de esta manera cuando autoriza, me envia a esa pagina
+    //de esta manera cuando autoriza, me envia a esta pagina
   };
 
   return (
     <div className="relative">
+
+       {/*background*/}
      <Image
      src={bombonera}
      alt="cancha-background"
@@ -29,6 +31,7 @@ function LoginPage() {
      placeholder="blur"
      priority />
 
+        {/*login form*/}
       <div className="h-screen flex flex-col justify-center bg-rose-600/80 w-3/4 mx-auto px-8 md:w-1/2  z-[0]">
        
         <div className=" relative w-3/4 sm:w-1/2 mx-auto">

@@ -2,6 +2,7 @@
 import { CardComplete, CardWithTeam } from '@/types';
 import { Card } from '@prisma/client'
 import { useSession } from 'next-auth/react'
+import { revalidatePath } from 'next/cache';
 import { useRouter } from 'next/navigation';
 
 
@@ -23,9 +24,13 @@ function EachCard({it}: {it: CardComplete}) {
           "Content-type": "application/json"
         },
         body: JSON.stringify({cardId, userId})
-      });
-     //router.push("/dashboard") don´t know why this doesn´t work as it should be:
+      }); 
+
+
+      //don´t know why this doesn´t work as it should be: revalidatePath("/dashboard")
+    //so, in the meanwhile...
      window.location.href = "/dashboard"
+  
      };
 
     const owned = it.ownersById.includes(userId)
